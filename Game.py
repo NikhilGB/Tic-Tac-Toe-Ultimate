@@ -9,13 +9,10 @@ class TicTacToe:
         self.root.title("Tic Tac Toe")
         self.root.geometry("400x500")
         
-        # Bind window closing event
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
         
-        # Initialize pygame mixer for sounds
         pygame.mixer.init()
         
-        # Load sound files (replace with your sound file paths)
         try:
             self.click_sound = pygame.mixer.Sound("click.wav")
             self.victory_sound = pygame.mixer.Sound("victory.wav")
@@ -33,7 +30,6 @@ class TicTacToe:
         self.main_menu_frame = tk.Frame(self.root)
         self.game_frame = tk.Frame(self.root)
         
-        # Create turn indicator label
         self.turn_indicator = tk.Label(
             self.game_frame,
             text="Player X's Turn",
@@ -69,22 +65,21 @@ class TicTacToe:
                 self.buttons.append(button)
     
     def stop_all_sounds(self):
-        # Stop background music if playing
         if hasattr(self, 'background_music') and self.background_music:
             self.background_music.stop()
-        pygame.mixer.stop()  # Stop all playing sounds
+        pygame.mixer.stop()  
     
     def show_main_menu(self):
         self.game_frame.pack_forget()
         self.main_menu_frame.pack()
         # Play background music
         if hasattr(self, 'background_music') and self.background_music:
-            self.background_music.play(-1)  # -1 means loop indefinitely
+            self.background_music.play(-1) 
     
     def start_game(self):
         self.main_menu_frame.pack_forget()
         self.game_frame.pack()
-        self.stop_all_sounds()  # Stop background music
+        self.stop_all_sounds()  
         self.reset_game()
     
     def update_turn_indicator(self):
@@ -102,7 +97,7 @@ class TicTacToe:
                 fg="blue" if self.current_player == "X" else "red"
             )
             
-            # Play click sound
+           
             if self.click_sound:
                 self.click_sound.play()
             
@@ -165,10 +160,10 @@ class TicTacToe:
     
     def on_closing(self):
         """Handle window closing event"""
-        self.stop_all_sounds()  # Stop all sounds
-        pygame.mixer.quit()     # Quit pygame mixer
-        self.root.destroy()     # Destroy the window
-        sys.exit()             # Exit the program
+        self.stop_all_sounds()  
+        pygame.mixer.quit()     
+        self.root.destroy()    
+        sys.exit()        
     
     def run(self):
         self.root.mainloop()
