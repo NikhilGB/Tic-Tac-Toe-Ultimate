@@ -6,6 +6,12 @@ To run the project:
 2. Ensure the the Game.py, background.mp3, click.wav, victory.wav all are in the same folder.
 3. Run the Game.py
 
+Game Features:
+1. Immersive 2 player tic-tac-toe experience
+2. Game music for added in game immersion.
+3. Play as many times you want.
+4. No keeping track of score, as it has also been found to be detrimental to the player experience long run
+
 Screen Grabs from the game
 
 ![MainMenu](https://github.com/user-attachments/assets/27085c03-ecd2-4f9f-8a9a-63a7ca529aa4)
