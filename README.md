@@ -1,7 +1,7 @@
 # Tic-Tac-Toe-Ultimate
 The world's most immersive Tic Tac Toe game human kind has ever seen
 To run the project:
-1. Install the pygame package. Run the following code:
+1. Install the pygame package. Run the following code in the console window:
    pip install pygame
 2. Ensure the the Game.py, background.mp3, click.wav, victory.wav all are in the same folder.
 3. Run the Game.py
