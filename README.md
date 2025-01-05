@@ -12,6 +12,8 @@ Game Features:
 3. Play as many times you want.
 4. No keeping track of score, as it has also been found to be detrimental to the player experience long run
 
+Play more to encorage the developer to add more features.
+
 Screen Grabs from the game
 
 ![MainMenu](https://github.com/user-attachments/assets/27085c03-ecd2-4f9f-8a9a-63a7ca529aa4)
