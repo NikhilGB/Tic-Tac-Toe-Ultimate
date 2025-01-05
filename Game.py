@@ -2,12 +2,16 @@ import tkinter as tk
 from tkinter import messagebox
 import pygame
 import os
+import sys
 
 class TicTacToe:
     def __init__(self):
         self.root = tk.Tk()
         self.root.title("Tic Tac Toe")
-        self.root.geometry("400x500")  # Made window taller to accommodate turn indicator
+        self.root.geometry("400x500")
+        
+        # Bind window closing event
+        self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
         
         # Initialize pygame mixer for sounds
         pygame.mixer.init()
@@ -53,7 +57,7 @@ class TicTacToe:
         start_button.pack(pady=10)
         
         quit_button = tk.Button(self.main_menu_frame, text="Quit", 
-                              font=('Arial', 16), command=self.root.quit)
+                              font=('Arial', 16), command=self.on_closing)
         quit_button.pack(pady=10)
     
     def create_game_board(self):
@@ -65,6 +69,12 @@ class TicTacToe:
                 button.grid(row=i, column=j)
                 self.buttons.append(button)
     
+    def stop_all_sounds(self):
+        # Stop background music if playing
+        if hasattr(self, 'background_music') and self.background_music:
+            self.background_music.stop()
+        pygame.mixer.stop()  # Stop all playing sounds
+    
     def show_main_menu(self):
         self.game_frame.pack_forget()
         self.main_menu_frame.pack()
@@ -75,9 +85,7 @@ class TicTacToe:
     def start_game(self):
         self.main_menu_frame.pack_forget()
         self.game_frame.pack()
-        # Stop background music
-        if hasattr(self, 'background_music') and self.background_music:
-            self.background_music.stop()
+        self.stop_all_sounds()  # Stop background music
         self.reset_game()
     
     def update_turn_indicator(self):
@@ -155,6 +163,13 @@ class TicTacToe:
         for button in self.buttons:
             button.config(text="")
         self.update_turn_indicator()
+    
+    def on_closing(self):
+        """Handle window closing event"""
+        self.stop_all_sounds()  # Stop all sounds
+        pygame.mixer.quit()     # Quit pygame mixer
+        self.root.destroy()     # Destroy the window
+        sys.exit()             # Exit the program
     
     def run(self):
         self.root.mainloop()
